@@ -1,18 +1,31 @@
 <x-core.layouts.app>
     <div class="rounded-lg border-4 border-black bg-white p-4 shadow-neo">
         <div class="flex flex-col gap-4">
+            @if(session('success'))
+                <div class="flex flex-row items-center justify-between gap-4 rounded-lg border-4 border-black bg-green-400 p-4 shadow-neo" x-data="{ showAlert: true }" x-show="showAlert">
+                    <span class="text-lg font-bold">
+                        {{ session('success') }}
+                    </span>
+                    <x-core.buttons.solid class="bg-white p-2" @click="showAlert = !showAlert">
+                        <x-core.icons.x/>
+                    </x-core.buttons.solid>
+                </div>
+            @endif
             <div class="flex flex-row">
                 <h1 class="text-2xl font-bold">
                     Data Pengguna
                 </h1>
             </div>
             <div class="flex flex-row items-center justify-between">
-                <form action="">
-                    <x-core.inputs.text id="input_search" name="filter['search']" placeholder="Cari pengguna..."/>
+                <form action="" class="flex flex-row items-center gap-4">
+                    <x-core.inputs.text id="input_search" name="filter[search]" placeholder="Cari pengguna..." value="{{ request()->input('filter.search') ?? null }}"/>
+                    <x-core.buttons.solid class="bg-white p-2">
+                        <x-core.icons.search/>
+                    </x-core.buttons.solid>
                 </form>
                 <a href="{{ route('core.users.create') }}">
-                    <x-core.buttons.solid class="bg-blue-400">
-                        Tambah Pengguna
+                    <x-core.buttons.solid class="bg-green-400 p-2">
+                        <x-core.icons.plus/>
                     </x-core.buttons.solid>
                 </a>
             </div>
@@ -20,45 +33,70 @@
                 <table class="w-full">
                     <thead>
                         <tr>
-                            <th class="border-4 border-black p-2">Nama</th>
-                            <th class="border-4 border-black p-2">Kontak</th>
+                            <th class="border-4 border-black p-2">
+                                <div class="flex flex-row items-center justify-center gap-2">
+                                    Nama
+                                    <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="size-6">
+                                        <path stroke-linecap="round" stroke-linejoin="round" d="M3 7.5 7.5 3m0 0L12 7.5M7.5 3v13.5m13.5 0L16.5 21m0 0L12 16.5m4.5 4.5V7.5"/>
+                                    </svg>
+                                </div>
+                            </th>
+                            <th class="border-4 border-black p-2 w-[20%]">Kontak</th>
                             <th class="border-4 border-black p-2">Role</th>
-                            <th class="border-4 border-black p-2">Aksi</th>
+                            <th class="border-4 border-black p-2 w-[5%]">Aksi</th>
                         </tr>
                     </thead>
                     <tbody>
-                        @foreach($users as $user)
+                        @forelse($users as $user)
                             <tr>
-                                <td class="border-4 border-black p-2">{{ $user->name }}</td>
-                                <td class="border-4 border-black p-2">{{ $user->email }}</td>
-                                <td class="border-4 border-black p-2">{{ $user->role }}</td>
+                                <td class="border-4 border-black p-2">{{ $user?->name }}</td>
+                                <td class="border-4 border-black p-2">
+                                    <div class="flex flex-col gap-1">
+                                        <span class="flex flex-row items-center gap-2">
+                                            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="size-6">
+                                                <path stroke-linecap="round" stroke-linejoin="round" d="M21.75 6.75v10.5a2.25 2.25 0 0 1-2.25 2.25h-15a2.25 2.25 0 0 1-2.25-2.25V6.75m19.5 0A2.25 2.25 0 0 0 19.5 4.5h-15a2.25 2.25 0 0 0-2.25 2.25m19.5 0v.243a2.25 2.25 0 0 1-1.07 1.916l-7.5 4.615a2.25 2.25 0 0 1-2.36 0L3.32 8.91a2.25 2.25 0 0 1-1.07-1.916V6.75"/>
+                                            </svg>
+                                            {{ $user?->email }}
+                                        </span>
+                                        <span class="flex flex-row items-center gap-2">
+                                            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="size-6">
+                                                <path stroke-linecap="round" stroke-linejoin="round" d="M10.5 1.5H8.25A2.25 2.25 0 0 0 6 3.75v16.5a2.25 2.25 0 0 0 2.25 2.25h7.5A2.25 2.25 0 0 0 18 20.25V3.75a2.25 2.25 0 0 0-2.25-2.25H13.5m-3 0V3h3V1.5m-3 0h3m-3 18.75h3"/>
+                                            </svg>
+                                            {{ $user?->phone ?? '-' }}
+                                        </span>
+                                    </div>
+                                </td>
+                                <td class="border-4 border-black p-2">{{ $user?->roles?->first()?->name ?? '-' }}</td>
                                 <td class="border-4 border-black p-2">
                                     <div class="flex flex-row items-center gap-2">
                                         <a href="{{ route('core.users.edit', $user->id) }}">
-                                            <x-core.buttons.solid class="rounded-full bg-blue-400 p-2">
-                                                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" class="size-6">
-                                                    <path d="M21.731 2.269a2.625 2.625 0 0 0-3.712 0l-1.157 1.157 3.712 3.712 1.157-1.157a2.625 2.625 0 0 0 0-3.712ZM19.513 8.199l-3.712-3.712-12.15 12.15a5.25 5.25 0 0 0-1.32 2.214l-.8 2.685a.75.75 0 0 0 .933.933l2.685-.8a5.25 5.25 0 0 0 2.214-1.32L19.513 8.2Z"/>
-                                                </svg>
+                                            <x-core.buttons.solid class="rounded-lg bg-amber-400 p-2">
+                                                <x-core.icons.edit/>
                                             </x-core.buttons.solid>
                                         </a>
                                         <form action="{{ route('core.users.destroy', $user->id) }}" method="POST">
                                             @csrf
                                             @method('DELETE')
                                             <button type="submit">
-                                                <x-core.buttons.solid class="rounded-full bg-red-400 p-2">
-                                                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" class="size-6">
-                                                        <path fill-rule="evenodd" d="M16.5 4.478v.227a48.816 48.816 0 0 1 3.878.512.75.75 0 1 1-.256 1.478l-.209-.035-1.005 13.07a3 3 0 0 1-2.991 2.77H8.084a3 3 0 0 1-2.991-2.77L4.087 6.66l-.209.035a.75.75 0 0 1-.256-1.478A48.567 48.567 0 0 1 7.5 4.705v-.227c0-1.564 1.213-2.9 2.816-2.951a52.662 52.662 0 0 1 3.369 0c1.603.051 2.815 1.387 2.815 2.951Zm-6.136-1.452a51.196 51.196 0 0 1 3.273 0C14.39 3.05 15 3.684 15 4.478v.113a49.488 49.488 0 0 0-6 0v-.113c0-.794.609-1.428 1.364-1.452Zm-.355 5.945a.75.75 0 1 0-1.5.058l.347 9a.75.75 0 1 0 1.499-.058l-.346-9Zm5.48.058a.75.75 0 1 0-1.498-.058l-.347 9a.75.75 0 0 0 1.5.058l.345-9Z" clip-rule="evenodd"/>
-                                                    </svg>
+                                                <x-core.buttons.solid class="rounded-lg bg-red-400 p-2">
+                                                    <x-core.icons.delete/>
                                                 </x-core.buttons.solid>
                                             </button>
                                         </form>
                                     </div>
                                 </td>
                             </tr>
-                        @endforeach
+                        @empty
+                            <tr>
+                                <td class="border-4 border-black p-2 text-center" colspan="4">
+                                    Tidak ada data pengguna
+                                </td>
+                            </tr>
+                        @endforelse
                     </tbody>
                 </table>
             </div>
+            {{ $users->links() }}
         </div>
     </div>
 </x-core.layouts.app>

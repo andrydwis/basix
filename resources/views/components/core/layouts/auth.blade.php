@@ -17,18 +17,7 @@
         @stack('styles')
     </head>
     <body class="h-screen scroll-smooth bg-blue-100 selection:bg-neutral-900/50 font-sans text-black antialiased">
-        <div class="h-full" x-data="{ showSidebar: true }">
-            <div class="grid h-full grid-cols-6">
-                <x-core.sidebars.app/>
-                <div class="col-span-5" :class="showSidebar ? 'col-span-5' : 'col-span-6'">
-                    <x-core.navbars.app/>
-                    <div class="p-4">
-                        {{ $slot }}
-                    </div>
-                </div>
-            </div>
-        </div>
-
+        {{ $slot }}
         @stack('scripts')
     </body>
 </html>

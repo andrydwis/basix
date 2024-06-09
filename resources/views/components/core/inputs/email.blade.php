@@ -1,0 +1,1 @@
+<input type="email" {{ $attributes->twMerge('rounded-lg border-4 border-black transition-all shadow-neo focus:translate-x-1 focus:translate-y-1 focus:border-black focus:shadow-none focus:ring-0') }}>
