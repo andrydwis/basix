@@ -6,11 +6,16 @@
     "license": "MIT",
     "require": {
         "php": "^8.2",
+        "gehrisandro/tailwind-merge-laravel": "^1.2",
         "laravel/framework": "^11.9",
-        "laravel/tinker": "^2.9"
+        "laravel/tinker": "^2.9",
+        "spatie/laravel-permission": "^6.7",
+        "spatie/laravel-query-builder": "^6.0"
     },
     "require-dev": {
+        "barryvdh/laravel-debugbar": "^3.13",
         "fakerphp/faker": "^1.23",
+        "laravel-lang/common": "^6.2",
         "laravel/breeze": "^2.0",
         "laravel/pint": "^1.13",
         "laravel/sail": "^1.26",
