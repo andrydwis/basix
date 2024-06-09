@@ -23,6 +23,11 @@ class UserController extends Controller
         return view('core.user.index', $data);
     }
 
+    public function create(): View
+    {
+        return view('core.user.create');
+    }
+
     public function destroy(User $user): RedirectResponse
     {
         $this->userService->destroy($user);
