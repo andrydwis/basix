@@ -2,6 +2,7 @@
 
 namespace App\Services\Core\User;
 
+use App\Enums\Roles;
 use App\Models\User;
 use Illuminate\Pagination\LengthAwarePaginator;
 use Illuminate\Support\Facades\Hash;
@@ -13,6 +14,11 @@ class UserService
     public function __construct()
     {
         //
+    }
+
+    public function getRolesList(): array
+    {
+        return Roles::toLabels();
     }
 
     public function list(): LengthAwarePaginator
@@ -39,6 +45,8 @@ class UserService
         $user->password = $data['password'] ? Hash::make($data['password']) : null;
         $user->phone = $data['phone'] ?? null;
         $user->save();
+
+        $user->syncRoles($data['role']);
 
         session()->flash('success', 'Berhasil menambahkan data pengguna');
 

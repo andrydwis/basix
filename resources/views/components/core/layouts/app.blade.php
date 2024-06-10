@@ -17,14 +17,12 @@
         @stack('styles')
     </head>
     <body class="h-screen scroll-smooth bg-neutral-300 selection:bg-neutral-900/50 font-sans text-black antialiased">
-        <div class="h-full" x-data="{ showSidebar: true }">
-            <div class="grid h-full grid-cols-6">
-                <x-core.sidebars.app/>
-                <div class="col-span-5" :class="showSidebar ? 'col-span-5' : 'col-span-6'">
-                    <x-core.navbars.app/>
-                    <div class="p-4">
-                        {{ $slot }}
-                    </div>
+        <div x-data="{ showSidebar: true }" class="flex h-full flex-col lg:flex-row">
+            <x-core.sidebars.app/>
+            <div class="flex-grow">
+                <x-core.navbars.app/>
+                <div class="p-4">
+                    {{ $slot }}
                 </div>
             </div>
         </div>

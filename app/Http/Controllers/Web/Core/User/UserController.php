@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\Web\Core\User;
 
 use App\Http\Controllers\Controller;
+use App\Http\Requests\Core\User\StoreUserRequest;
 use App\Models\User;
 use App\Services\Core\User\UserService;
 use Illuminate\Http\RedirectResponse;
@@ -18,6 +19,7 @@ class UserController extends Controller
     {
         $data = [
             'users' => $this->userService->list(),
+            'roles' => $this->userService->getRolesList(),
         ];
 
         return view('core.user.index', $data);
@@ -25,7 +27,18 @@ class UserController extends Controller
 
     public function create(): View
     {
-        return view('core.user.create');
+        $data = [
+            'roles' => $this->userService->getRolesList(),
+        ];
+
+        return view('core.user.create', $data);
+    }
+
+    public function store(StoreUserRequest $request): RedirectResponse
+    {
+        $this->userService->store($request->validated());
+
+        return redirect()->route('core.users.index');
     }
 
     public function destroy(User $user): RedirectResponse
