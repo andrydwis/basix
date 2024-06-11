@@ -16,6 +16,33 @@ class UserService
         //
     }
 
+    public function getColumns(): array
+    {
+        return [
+            [
+                'name' => 'name',
+                'label' => 'Nama',
+                'sortable' => true,
+                'class' => 'w-1/2'
+            ],
+            [
+                'name' => 'contact',
+                'label' => 'Kontak',
+                'sortable' => false,
+            ],
+            [
+                'name' => 'role',
+                'label' => 'Role Pengguna',
+                'sortable' => false,
+            ],
+            [
+                'name' => 'action',
+                'label' => 'Aksi',
+                'sortable' => false,
+            ],
+        ];
+    }
+
     public function getRolesList(): array
     {
         return Roles::toLabels();
@@ -24,13 +51,20 @@ class UserService
     public function list(): LengthAwarePaginator
     {
         return QueryBuilder::for(User::class)
-            ->allowedFilters([AllowedFilter::callback('search', function ($query, $search) {
-                $query->whereAny([
-                    'name',
-                    'email',
-                    'phone',
-                ], 'ilike', '%' . $search . '%');
-            })])
+            ->allowedFilters([
+                AllowedFilter::callback('search', function ($query, $search) {
+                    $query->whereAny([
+                        'name',
+                        'email',
+                        'phone',
+                    ], 'ilike', '%' . $search . '%');
+                }, null, 'search'),
+                AllowedFilter::callback('role', function ($query, $role) {
+                    $query->whereHas('roles', function ($query) use ($role) {
+                        $query->where('name', $role);
+                    });
+                }, null, 'role'),
+            ])
             ->allowedSorts(['name'])
             ->defaultSort('-created_at')
             ->with(['roles'])

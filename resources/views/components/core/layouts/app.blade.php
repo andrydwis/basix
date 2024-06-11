@@ -14,10 +14,12 @@
         <!-- Scripts -->
         @vite(['resources/css/app.css', 'resources/js/app.js'])
 
+        @livewireStyles
+
         @stack('styles')
     </head>
-    <body class="h-screen scroll-smooth bg-neutral-300 selection:bg-neutral-900/50 font-sans text-black antialiased">
-        <div x-data="{ showSidebar: true }" class="flex h-full flex-col lg:flex-row">
+    <body class="scroll-smooth bg-neutral-300 selection:bg-neutral-900/50 font-sans text-black antialiased">
+        <div x-data="{ showSidebar: false }" class="flex h-full flex-col lg:flex-row">
             <x-core.sidebars.app/>
             <div class="flex-grow">
                 <x-core.navbars.app/>
@@ -26,6 +28,8 @@
                 </div>
             </div>
         </div>
+
+        @livewireScripts
 
         @stack('scripts')
     </body>

@@ -1,4 +1,4 @@
-<div class="absolute top-0 z-40 h-screen overflow-y-auto border-r-4 border-black bg-white p-4 transition-all min-w-[300px] lg:sticky lg:block"
+<div class="fixed top-0 left-0 z-40 h-screen overflow-y-auto border-r-4 border-black bg-white p-4 transition-all min-w-[300px] lg:sticky"
         x-show="showSidebar"
         x-transition:enter="transition ease-out duration-200"
         x-transition:enter-start="opacity-0 scale-95"
@@ -36,4 +36,4 @@
         </div>
     </div>
 </div>
-<div class="absolute top-0 z-20 h-full w-full bg-black/50 lg:hidden" x-show="showSidebar" @click="showSidebar = !showSidebar"></div>
+<div class="fixed top-0 left-0 z-20 h-full w-full bg-black/50 lg:hidden" x-show="showSidebar" @click="showSidebar = !showSidebar"></div>

@@ -14,4 +14,9 @@ enum Roles: string
             self::User->value => 'User',
         ];
     }
+
+    public function label(): string
+    {
+        return self::toLabels()[$this->value];
+    }
 }

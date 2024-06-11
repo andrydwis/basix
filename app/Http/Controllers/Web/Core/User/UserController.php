@@ -18,6 +18,7 @@ class UserController extends Controller
     public function index(): View
     {
         $data = [
+            'columns' => $this->userService->getColumns(),
             'users' => $this->userService->list(),
             'roles' => $this->userService->getRolesList(),
         ];
