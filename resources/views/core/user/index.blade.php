@@ -30,6 +30,7 @@
                 </x-core.buttons.solid>
             </a>
         </x-slot>
+        <x-core.alerts.app/>
         <x-core.tables.app :columns="$columns">
             @forelse($users as $user)
                 <tr>
@@ -78,6 +79,6 @@
                 </tr>
             @endforelse
         </x-core.tables.app>
-        {{ $users->links() }}
+        {{ $users->withQueryString()->links() }}
     </x-core.cards.app>
 </x-core.layouts.app>

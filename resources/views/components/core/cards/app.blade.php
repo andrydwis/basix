@@ -7,7 +7,6 @@
 ])
 <div {{ $attributes->twMerge('rounded-lg border-4 border-black bg-white p-4 shadow-neo') }}>
     <div class="flex flex-col gap-4">
-        <x-core.alerts.app/>
         @if($title)
             <div class="flex flex-row items-center justify-between gap-4">
                 <div class="flex flex-row items-center gap-4">

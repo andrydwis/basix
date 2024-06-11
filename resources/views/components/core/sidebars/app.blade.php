@@ -36,4 +36,4 @@
         </div>
     </div>
 </div>
-<div class="fixed top-0 left-0 z-20 h-full w-full bg-black/50 lg:hidden" x-show="showSidebar" @click="showSidebar = !showSidebar"></div>
+<div class="fixed top-0 left-0 z-20 h-full w-full bg-black/50 backdrop-blur lg:hidden" x-show="showSidebar" @click="showSidebar = !showSidebar"></div>
