@@ -11,6 +11,7 @@
         "laravel/sanctum": "^4.0",
         "laravel/tinker": "^2.9",
         "livewire/livewire": "^3.5",
+        "opcodesio/log-viewer": "^3.10",
         "spatie/laravel-permission": "^6.7",
         "spatie/laravel-query-builder": "^6.0"
     },

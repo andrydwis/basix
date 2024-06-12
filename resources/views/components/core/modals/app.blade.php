@@ -20,7 +20,7 @@
     <div @click="show = false" class="fixed inset-0 bg-black/50 backdrop-blur"></div>
 
     {{-- Modal Body --}}
-    <x-core.cards.app title="{{ $title }}" :withSearch="false" {{ $attributes->twMerge('fixed inset-0 m-auto max-h-[50%] h-max w-[80%] lg:w-1/2 xl:w-1/3 overflow-y-auto shadow-none') }}>
+    <x-core.cards.app title="{{ $title }}" {{ $attributes->twMerge('fixed inset-0 m-auto max-h-[50%] h-max w-[80%] lg:w-1/2 xl:w-1/3 overflow-y-auto shadow-none') }}>
         <x-slot name="afterTitle">
             <x-core.buttons.solid class="bg-white p-2" @click="show = false">
                 <x-core.icons.x/>

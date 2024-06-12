@@ -1,27 +1,21 @@
-<x-guest-layout>
-    <div class="mb-4 text-sm text-gray-600">
-        {{ __('This is a secure area of the application. Please confirm your password before continuing.') }}
+<x-core.layouts.auth>
+    <div class="container flex h-full flex-col items-center justify-center">
+        <x-core.cards.app title="Konfirmasi Password" class="w-[400px]">
+            <x-core.alerts.app/>
+            <x-core.forms.app action="{{ route('password.confirm') }}" method="POST">
+                <div class="flex flex-col gap-4">
+                    <x-core.inputs.group>
+                        <x-core.inputs.label for="input_password" required="true">
+                            Password
+                        </x-core.inputs.label>
+                        <x-core.inputs.password id="input_password" name="password" placeholder="Masukkan Password" required="true" autocomplete="current-password"/>
+                        <x-core.inputs.error name="password"/>
+                    </x-core.inputs.group>
+                    <x-core.buttons.solid type="submit" class="bg-green-400">
+                        Konfirmasi
+                    </x-core.buttons.solid>
+                </div>
+            </x-core.forms.app>
+        </x-core.cards.app>
     </div>
-
-    <form method="POST" action="{{ route('password.confirm') }}">
-        @csrf
-
-        <!-- Password -->
-        <div>
-            <x-input-label for="password" :value="__('Password')" />
-
-            <x-text-input id="password" class="block mt-1 w-full"
-                            type="password"
-                            name="password"
-                            required autocomplete="current-password" />
-
-            <x-input-error :messages="$errors->get('password')" class="mt-2" />
-        </div>
-
-        <div class="flex justify-end mt-4">
-            <x-primary-button>
-                {{ __('Confirm') }}
-            </x-primary-button>
-        </div>
-    </form>
-</x-guest-layout>
+</x-core.layouts.auth>

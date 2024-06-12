@@ -9,7 +9,7 @@ Route::get('/', function () {
 
 require __DIR__ . '/auth.php';
 
-Route::prefix('core')->name('core.')->middleware(['auth'])->group(function () {
+Route::prefix('core')->name('core.')->middleware(['auth', 'verified'])->group(function () {
     Route::get('dashboard', [\App\Http\Controllers\Web\Core\Dashboard\DashboardController::class, 'index'])->name('dashboard.index');
     Route::resource('users', \App\Http\Controllers\Web\Core\User\UserController::class);
 });

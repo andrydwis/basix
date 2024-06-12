@@ -40,6 +40,11 @@
                             <a href="mailto:{{ $user?->email }}" class="flex flex-row items-center gap-2 hover:underline">
                                 <x-core.icons.email/>
                                 {{ $user?->email }}
+                                @if($user?->email_verified_at)
+                                    <div class="text-green-400">
+                                        <x-core.icons.check/>
+                                    </div>
+                                @endif
                             </a>
                             <span class="flex flex-row items-center gap-2">
                                 <x-core.icons.phone/>

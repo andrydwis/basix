@@ -1,25 +1,21 @@
-<x-guest-layout>
-    <div class="mb-4 text-sm text-gray-600">
-        {{ __('Forgot your password? No problem. Just let us know your email address and we will email you a password reset link that will allow you to choose a new one.') }}
+<x-core.layouts.auth>
+    <div class="container flex h-full flex-col items-center justify-center">
+        <x-core.cards.app title="Lupa Password?" class="w-[400px]">
+            <x-core.alerts.app/>
+            <x-core.forms.app action="{{ route('password.email') }}" method="POST">
+                <div class="flex flex-col gap-4">
+                    <x-core.inputs.group>
+                        <x-core.inputs.label for="input_email" required="true">
+                            Email
+                        </x-core.inputs.label>
+                        <x-core.inputs.email id="input_email" name="email" type="email" value="{{ old('email') }}" placeholder="Masukkan email" required="true" autofocus/>
+                        <x-core.inputs.error name="email"/>
+                    </x-core.inputs.group>
+                    <x-core.buttons.solid type="submit" class="bg-green-400">
+                        Kirim Link Reset Password
+                    </x-core.buttons.solid>
+                </div>
+            </x-core.forms.app>
+        </x-core.cards.app>
     </div>
-
-    <!-- Session Status -->
-    <x-auth-session-status class="mb-4" :status="session('status')" />
-
-    <form method="POST" action="{{ route('password.email') }}">
-        @csrf
-
-        <!-- Email Address -->
-        <div>
-            <x-input-label for="email" :value="__('Email')" />
-            <x-text-input id="email" class="block mt-1 w-full" type="email" name="email" :value="old('email')" required autofocus />
-            <x-input-error :messages="$errors->get('email')" class="mt-2" />
-        </div>
-
-        <div class="flex items-center justify-end mt-4">
-            <x-primary-button>
-                {{ __('Email Password Reset Link') }}
-            </x-primary-button>
-        </div>
-    </form>
-</x-guest-layout>
+</x-core.layouts.auth>

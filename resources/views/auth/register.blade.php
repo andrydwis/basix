@@ -1,6 +1,6 @@
 <x-core.layouts.auth>
     <div class="container flex h-full flex-col items-center justify-center">
-        <x-core.cards.app :withSearch="false" class="w-[400px]">
+        <x-core.cards.app class="w-[400px]">
             <x-slot name="beforeTitle">
                 <a href="{{ route('home') }}">
                     <x-core.buttons.solid class="p-2 bg-white">
@@ -42,7 +42,7 @@
                         <x-core.inputs.error name="password_confirmation"/>
                     </x-core.inputs.group>
                     <div class="flex flex-row items-center justify-end">
-                        <a href="{{ route('password.request') }}" class="text-lg font-bold hover:underline">Lupa password?</a>
+                        <a href="{{ route('login') }}" class="text-lg font-bold hover:underline">Sudah punya akun?</a>
                     </div>
                     <x-core.buttons.solid type="submit" class="bg-green-400">Daftar</x-core.buttons.solid>
                 </div>

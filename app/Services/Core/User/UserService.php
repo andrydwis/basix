@@ -57,7 +57,7 @@ class UserService
                         'name',
                         'email',
                         'phone',
-                    ], 'ilike', '%' . $search . '%');
+                    ], 'like', '%' . $search . '%');
                 }, null, 'search'),
                 AllowedFilter::callback('role', function ($query, $role) {
                     $query->whereHas('roles', function ($query) use ($role) {
