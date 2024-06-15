@@ -16,8 +16,8 @@
             </x-core.buttons.solid>
         </button>
     </div>
-    <div class="py-12">
-        <div class="mb-4 flex flex-col gap-2 border-l-4 border-black">
+    <div class="py-12 flex flex-col gap-4">
+        <div class="flex flex-col gap-2 border-l-4 border-black">
             <a href="{{ route('core.dashboard.index') }}" class="flex flex-row items-center gap-2 rounded-r-full p-2 text-lg font-semibold text-neutral-600 hover:bg-neutral-300 hover:text-black">
                 <x-core.icons.dashboard/>
                 <span>
@@ -25,8 +25,7 @@
                 </span>
             </a>
         </div>
-        <span class="mb-2 text-2xl font-bold">Data Umum</span>
-        <div class="mb-4 flex flex-col gap-2 border-l-4 border-black">
+        <div class="flex flex-col gap-2 border-l-4 border-black">
             <a href="{{ route('core.users.index') }}" class="flex flex-row items-center gap-2 rounded-r-full p-2 text-lg font-semibold text-neutral-600 hover:bg-neutral-300 hover:text-black">
                 <x-core.icons.user/>
                 <span>
