@@ -22,7 +22,7 @@
     {{-- Modal Body --}}
     <x-core.cards.app title="{{ $title }}" {{ $attributes->twMerge('fixed inset-0 m-auto max-h-[50%] h-max w-[80%] lg:w-1/2 xl:w-1/3 overflow-y-auto shadow-none') }}>
         <x-slot name="afterTitle">
-            <x-core.buttons.solid class="bg-white p-2" @click="show = false">
+            <x-core.buttons.solid class="p-2" @click="show = false">
                 <x-core.icons.x/>
             </x-core.buttons.solid>
         </x-slot>

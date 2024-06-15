@@ -10,17 +10,17 @@
                     </x-core.inputs.select>
                     <x-core.inputs.error name="role"/>
                 </x-core.inputs.group>
-                <x-core.buttons.solid type="submit" class="bg-white">Filter</x-core.buttons.solid>
+                <x-core.buttons.solid type="submit">Filter</x-core.buttons.solid>
             </div>
         </x-core.forms.app>
     </x-core.modals.app>
     <x-core.cards.app title="Daftar Pengguna" withSearch="true">
         <x-slot name="actions">
-            <x-core.buttons.solid class="bg-white p-2" @click="$dispatch('open-modal',{name:'filter'})">
+            <x-core.buttons.solid class="p-2" @click="$dispatch('open-modal',{name:'filter'})">
                 <x-core.icons.filter/>
             </x-core.buttons.solid>
             <a href="{{ route('core.users.index') }}">
-                <x-core.buttons.solid class="bg-white p-2">
+                <x-core.buttons.solid class="p-2">
                     <x-core.icons.reset/>
                 </x-core.buttons.solid>
             </a>

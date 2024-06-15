@@ -3,7 +3,7 @@
         <x-core.cards.app class="w-[400px]">
             <x-slot name="beforeTitle">
                 <a href="{{ route('home') }}">
-                    <x-core.buttons.solid class="p-2 bg-white">
+                    <x-core.buttons.solid class="p-2">
                         <x-core.icons.back/>
                     </x-core.buttons.solid>
                 </a>
@@ -31,6 +31,15 @@
                         <a href="{{ route('password.request') }}" class="text-lg font-bold hover:underline">Lupa password?</a>
                     </div>
                     <x-core.buttons.solid type="submit" class="bg-blue-400">Masuk</x-core.buttons.solid>
+                    @if(config('services.google.client_id'))
+                        <div class="flex items-center text-lg font-bold before:flex-1 before:border-t before:border-black before:me-6 after:flex-1 after:border-t after:border-black after:ms-6">Atau</div>
+                        <a href="{{ route('socialite.redirect', ['google']) }}">
+                            <x-core.buttons.solid type="button" class="w-full">
+                                <x-core.icons.google/>
+                                Masuk dengan Google
+                            </x-core.buttons.solid>
+                        </a>
+                    @endif
                 </div>
             </x-core.forms.app>
         </x-core.cards.app>

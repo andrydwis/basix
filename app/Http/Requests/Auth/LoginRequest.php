@@ -2,6 +2,7 @@
 
 namespace App\Http\Requests\Auth;
 
+use App\Models\User;
 use Illuminate\Auth\Events\Lockout;
 use Illuminate\Foundation\Http\FormRequest;
 use Illuminate\Support\Facades\Auth;
@@ -32,6 +33,11 @@ class LoginRequest extends FormRequest
         ];
     }
 
+    public function isUserExist()
+    {
+        return User::query()->where('email', $this->email)->first();
+    }
+
     /**
      * Attempt to authenticate the request's credentials.
      *
@@ -41,7 +47,17 @@ class LoginRequest extends FormRequest
     {
         $this->ensureIsNotRateLimited();
 
-        if (! Auth::attempt($this->only('email', 'password'), $this->boolean('remember'))) {
+        $user = $this->isUserExist();
+
+        if (!$user) {
+            throw ValidationException::withMessages(['email' => trans('auth.not_found')]);
+        }
+
+        if ($user->password === null) {
+            throw ValidationException::withMessages(['email' => trans('auth.must_login_with_socialite')]);
+        }
+
+        if (!Auth::attempt($this->only('email', 'password'), $this->boolean('remember'))) {
             RateLimiter::hit($this->throttleKey());
 
             throw ValidationException::withMessages([
@@ -59,7 +75,7 @@ class LoginRequest extends FormRequest
      */
     public function ensureIsNotRateLimited(): void
     {
-        if (! RateLimiter::tooManyAttempts($this->throttleKey(), 5)) {
+        if (!RateLimiter::tooManyAttempts($this->throttleKey(), 5)) {
             return;
         }
 
@@ -80,6 +96,6 @@ class LoginRequest extends FormRequest
      */
     public function throttleKey(): string
     {
-        return Str::transliterate(Str::lower($this->string('email')).'|'.$this->ip());
+        return Str::transliterate(Str::lower($this->string('email')) . '|' . $this->ip());
     }
 }

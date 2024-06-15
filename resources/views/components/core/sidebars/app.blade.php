@@ -11,7 +11,7 @@
             {{ config('app.name') }}
         </a>
         <button>
-            <x-core.buttons.solid class="bg-white p-2" @click="showSidebar = !showSidebar">
+            <x-core.buttons.solid class="p-2" @click="showSidebar = !showSidebar">
                 <x-core.icons.x/>
             </x-core.buttons.solid>
         </button>

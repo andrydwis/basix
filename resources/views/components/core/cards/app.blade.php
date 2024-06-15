@@ -21,7 +21,7 @@
                 @if($withSearch)
                     <x-core.forms.app method="GET" @submit.prevent="filter" class="flex flex-row items-center gap-4">
                         <x-core.inputs.text id="input_search" name="filter[search]" placeholder="Cari..." value="{{ request()->input('filter.search') ?? null }}"/>
-                        <x-core.buttons.solid class="bg-white p-2">
+                        <x-core.buttons.solid class="p-2">
                             <x-core.icons.search/>
                         </x-core.buttons.solid>
                     </x-core.forms.app>

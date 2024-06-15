@@ -9,6 +9,7 @@
         "gehrisandro/tailwind-merge-laravel": "^1.2",
         "laravel/framework": "^11.9",
         "laravel/sanctum": "^4.0",
+        "laravel/socialite": "^5.14",
         "laravel/tinker": "^2.9",
         "livewire/livewire": "^3.5",
         "opcodesio/log-viewer": "^3.10",

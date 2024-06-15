@@ -3,7 +3,7 @@
         <div class="flex flex-col gap-4">
             <div class="flex flex-row items-center gap-4">
                 <a href="{{ route('core.users.index') }}">
-                    <x-core.buttons.solid class="p-2 bg-white">
+                    <x-core.buttons.solid class="p-2">
                         <x-core.icons.back/>
                     </x-core.buttons.solid>
                 </a>

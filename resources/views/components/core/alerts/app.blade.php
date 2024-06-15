@@ -5,7 +5,7 @@
                 {{ session('success') }}
             </span>
         </div>
-        <x-core.buttons.solid class="bg-white p-2" @click="showAlert = !showAlert">
+        <x-core.buttons.solid class="p-2" @click="showAlert = !showAlert">
             <x-core.icons.x/>
         </x-core.buttons.solid>
     </div>
@@ -17,7 +17,7 @@
                 {{ session('status') }}
             </span>
         </div>
-        <x-core.buttons.solid class="bg-white p-2" @click="showAlert = !showAlert">
+        <x-core.buttons.solid class="p-2" @click="showAlert = !showAlert">
             <x-core.icons.x/>
         </x-core.buttons.solid>
     </div>
