@@ -1,6 +1,6 @@
 <x-core.layouts.auth>
-    <div class="container flex h-full flex-col items-center justify-center">
-        <x-core.cards.app title="Konfirmasi Password" class="w-[400px]">
+    <div class="container flex h-full flex-col items-center justify-center p-4 sm:p-0">
+        <x-core.cards.app title="Konfirmasi Password" class="max-w-[400px] w-full">
             <x-core.alerts.app/>
             <x-core.forms.app action="{{ route('password.confirm') }}" method="POST">
                 <div class="flex flex-col gap-4">

@@ -14,6 +14,19 @@
             </div>
         </x-core.forms.app>
     </x-core.modals.app>
+    <x-core.modals.app name="delete" title="Hapus Pengguna">
+        <x-core.forms.app id="form_delete" method="DELETE" x-on:set-delete.window="$el.action = $event.detail.action">
+            <div class="flex flex-col gap-4">
+                <div>
+                    Apakah anda yakin menghapus pengguna ini?
+                </div>
+                <x-core.buttons.solid id="form_delete" type="submit" class="bg-red-400">
+                    <x-core.icons.delete/>
+                    Hapus
+                </x-core.buttons.solid>
+            </div>
+        </x-core.forms.app>
+    </x-core.modals.app>
     <x-core.cards.app title="Daftar Pengguna" withSearch="true">
         <x-slot name="actions">
             <x-core.buttons.solid class="p-2" @click="$dispatch('open-modal',{name:'filter'})">
@@ -68,11 +81,14 @@
                                     <x-core.icons.edit/>
                                 </x-core.buttons.solid>
                             </a>
-                            <x-core.forms.app action="{{ route('core.users.destroy', $user) }}" method="DELETE">
-                                <x-core.buttons.solid type="submit" @click="confirm('Hapus pengguna ini?') ? true : event.preventDefault()" :disabled="auth()->user()->id == $user->id" class="bg-red-400 p-2">
-                                    <x-core.icons.delete/>
-                                </x-core.buttons.solid>
-                            </x-core.forms.app>
+                            <x-core.buttons.solid type="submit" @click="$dispatch('open-modal',{name:'delete'}); $dispatch('set-delete',{action: '{{ route('core.users.destroy', $user) }}'})" :disabled="auth()->user()->id == $user->id" class="bg-red-400 p-2">
+                                <x-core.icons.delete/>
+                            </x-core.buttons.solid>
+{{--                            <x-core.forms.app action="{{ route('core.users.destroy', $user) }}" method="DELETE">--}}
+{{--                                <x-core.buttons.solid type="submit" @click="confirm('Hapus pengguna ini?') ? true : event.preventDefault()" :disabled="auth()->user()->id == $user->id" class="bg-red-400 p-2">--}}
+{{--                                    <x-core.icons.delete/>--}}
+{{--                                </x-core.buttons.solid>--}}
+{{--                            </x-core.forms.app>--}}
                         </div>
                     </td>
                 </tr>
