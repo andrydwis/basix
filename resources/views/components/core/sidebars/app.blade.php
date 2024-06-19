@@ -16,9 +16,9 @@
             </x-core.buttons.solid>
         </button>
     </div>
-    <div class="py-12 flex flex-col gap-4">
+    <div class="flex flex-col gap-4 py-12">
         <div class="flex flex-col gap-2 border-l-4 border-black">
-            <a href="{{ route('core.dashboard.index') }}" class="flex flex-row items-center gap-2 rounded-r-full p-2 text-lg font-semibold text-neutral-600 hover:bg-neutral-300 hover:text-black">
+            <a href="{{ route('core.dashboard.index') }}" class="flex flex-row items-center gap-2 p-2 text-lg font-semibold text-neutral-600 hover:bg-neutral-300 hover:text-black">
                 <x-core.icons.dashboard/>
                 <span>
                     Dashboard
@@ -26,10 +26,16 @@
             </a>
         </div>
         <div class="flex flex-col gap-2 border-l-4 border-black">
-            <a href="{{ route('core.users.index') }}" class="flex flex-row items-center gap-2 rounded-r-full p-2 text-lg font-semibold text-neutral-600 hover:bg-neutral-300 hover:text-black">
+            <a href="{{ route('core.users.index') }}" class="flex flex-row items-center gap-2 p-2 text-lg font-semibold text-neutral-600 hover:bg-neutral-300 hover:text-black">
                 <x-core.icons.user/>
                 <span>
                     Pengguna
+                </span>
+            </a>
+            <a href="{{ route('core.input') }}" class="flex flex-row items-center gap-2 p-2 text-lg font-semibold text-neutral-600 hover:bg-neutral-300 hover:text-black">
+                <x-core.icons.dashboard/>
+                <span>
+                    Input
                 </span>
             </a>
         </div>

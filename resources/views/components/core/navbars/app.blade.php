@@ -1,4 +1,4 @@
-<nav class="sticky top-0 border-b-4 border-black bg-white p-4">
+<nav class="sticky top-0 border-b-4 border-black bg-white p-4 z-30">
     <div class="flex flex-row items-center justify-between">
         <div class="flex flex-row items-center gap-4">
             <x-core.buttons.solid class="p-2" x-cloak x-show="!showSidebar" @click="showSidebar = !showSidebar">

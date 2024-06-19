@@ -1,0 +1,1 @@
+<input type="checkbox" {{ $attributes->twMerge('rounded-full') }}>

@@ -1,0 +1,1 @@
+<input type="file" {{ $attributes->twMerge('file:mr-4 file:py-2 file:px-4 file:border-0 file:text-sm file:font-bold file:bg-neutral-100 file:text-black hover:file:bg-neutral-300 rounded-lg border-4 border-black transition-all shadow-neo focus:translate-x-1 focus:translate-y-1 focus:border-black focus:shadow-none focus:ring-0') }}>

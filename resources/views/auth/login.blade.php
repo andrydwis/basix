@@ -1,5 +1,5 @@
 <x-core.layouts.auth>
-    <div class="container flex h-full flex-col items-center justify-center p-4 sm:p-0">
+    <div class="container flex flex-col items-center justify-center p-4 py-8">
         <x-core.cards.app class="max-w-[400px] w-full">
             <x-slot name="beforeTitle">
                 <a href="{{ route('home') }}">
