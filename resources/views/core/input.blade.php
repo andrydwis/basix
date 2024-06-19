@@ -59,9 +59,7 @@
                         <x-core.inputs.label for="input_quill" required="true">
                             Quill
                         </x-core.inputs.label>
-                        <div>
-                            <div id="editor"></div>
-                        </div>
+                        <x-core.inputs.wysiwyg/>
                         <x-core.inputs.error name="quill"/>
                     </x-core.inputs.group>
                     <x-core.buttons.solid type="submit" class="bg-green-400">Simpan</x-core.buttons.solid>
@@ -70,11 +68,3 @@
         </div>
     </div>
 </x-core.layouts.app>
-
-@push('scripts')
-    <script type="module">
-        const quill = new window.Quill('#editor', {
-            theme: 'snow'
-        });
-    </script>
-@endpush
