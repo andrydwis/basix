@@ -1,9 +1,10 @@
 <x-core.layouts.auth>
     <div class="container flex flex-col items-center justify-center gap-4 p-4 py-8">
         <x-core.cards.app>
-            <img src="{{ asset('images/logos/basix.png') }}" alt="logo" class="rounded-lg transition-all size-80 hover:brightness-50">
+            <img src="{{ asset('images/logos/basix.png') }}" alt="logo"
+                class="transition-all rounded-lg size-80 hover:brightness-50">
         </x-core.cards.app>
-        <div class="flex flex-row items-center justify-between sm:justify-center gap-4 w-full">
+        <div class="flex flex-row items-center justify-between w-full gap-4 sm:justify-center">
             <x-core.buttons.solid class="bg-white">
                 {{ config('app.name') }}
             </x-core.buttons.solid>

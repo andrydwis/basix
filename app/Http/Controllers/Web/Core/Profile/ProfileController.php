@@ -34,6 +34,6 @@ class ProfileController extends Controller
     {
         $this->profileService->destroy();
 
-        return redirect('/');
+        return redirect()->route('login');
     }
 }
