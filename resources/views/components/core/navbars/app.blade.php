@@ -24,6 +24,11 @@
                                 </span>
                                 <span class="font-bold line-clamp-2">{{ auth()->user()->name }}</span>
                             </div>
+                            <a href="{{ route('core.profile.edit') }}">
+                                <x-core.buttons.solid type="button" class="w-full">
+                                    Profil
+                                </x-core.buttons.solid>
+                            </a>
                             <x-core.buttons.solid type="submit" class="bg-red-400">
                                 Keluar
                             </x-core.buttons.solid>
