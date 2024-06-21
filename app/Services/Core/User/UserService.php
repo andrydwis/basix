@@ -11,11 +11,6 @@ use Spatie\QueryBuilder\QueryBuilder;
 
 class UserService
 {
-    public function __construct()
-    {
-        //
-    }
-
     public function getColumns(): array
     {
         return [
@@ -95,15 +90,19 @@ class UserService
         $user->phone = $data['phone'] ?? null;
         $user->save();
 
+        $user->syncRoles($data['role']);
+
         session()->flash('success', 'Berhasil memperbarui data pengguna');
 
         return $user;
     }
 
-    public function destroy(User $user): void
+    public function destroy(User $user): bool
     {
         $user->delete();
 
         session()->flash('success', 'Berhasil menghapus data pengguna');
+
+        return true;
     }
 }
